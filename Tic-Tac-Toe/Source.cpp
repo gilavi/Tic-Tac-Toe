@@ -1,7 +1,6 @@
 #include<Windows.h>
 #include<iostream>
 #include<string>
-#include<string>
 #include<stdlib.h>
 #include<time.h>
 using namespace std;
@@ -21,6 +20,7 @@ st:
 	x = 1;
 	system("color 3");
 	srand(time(0));
+	cout<<"what do you want : "<<endl<<"1)eazy"<<endl<<"2)normal"<<endl<<"3)hard"<<endl;
 	//////////////////////////////////////////////////// while mozraoba////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	while (game_running = true){
 		system("cls");
