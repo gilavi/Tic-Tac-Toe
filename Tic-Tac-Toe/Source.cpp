@@ -1,17 +1,18 @@
 #include<Windows.h>
 #include<iostream>
 #include<string>
+#include<string>
 #include<stdlib.h>
 #include<time.h>
 using namespace std;
-char map[3][10] = {
-	"(X)( )( )",
-	"( )( )( )",
-	"( )( )( )",
-};
 bool game_running = true;
 int main(){
 start:
+	char map[3][10] = {
+		"(X)( )( )",
+		"( )( )( )",
+		"( )( )( )",
+	};
 	int y = 0, x = 1;
 	int k = 0;
 	int con = 0;
@@ -65,20 +66,24 @@ st:
 		if (GetAsyncKeyState(VK_SPACE)){
 			map[y][x] = 'X';
 			break;
-		}
-		//////////////////////////while shemowmeba
-		for (int h = 0; h < 3; h++){
-			for (int j = 0; j < 9; j++){
-				if (map[h][1] == 'X' && map[h][4] == 'X' && map[h][7] == 'X'){
-					goto finishw;
-				}
-				if (map[1][j] == 'X' && map[2][j] == 'X' && map[3][j] == 'X'){
-					goto finishw;
+			for (int h = 0; h < 3; h++){
+				for (int j = 0; j < 9; j++){
+					if (map[h][1] == 'X' && map[h][4] == 'X' && map[h][7] == 'X'){
+						goto finishw;
+					}
+					if (map[1][j] == 'X' && map[2][j] == 'X' && map[3][j] == 'X'){
+						goto finishw;
+					}
 				}
 			}
+			if (map[0][1] == 'X' && map[1][4] == 'X' && map[2][7] == 'X'){
+				goto finishw;
+			}
+			if (map[2][1] == 'X' && map[1][4] == 'X' && map[0][7] == 'X'){
+				goto finishw;
+			}
 		}
-
-
+		//////////////////////////while shemowmeba
 	}
 
 rand:
@@ -118,7 +123,12 @@ rand:
 finishw:
 	system("cls");
 	cout << "you won!" << endl << "do you want to continiu ? " << endl;
-	system("cls");
-	goto start;
+	string yesorno;
+	cin >> yesorno;
+	if (yesorno[0] == 'y'&&yesorno[1] == 'e'&&yesorno[2] == 's')goto start;
+	if (yesorno[0] == 'Y'&&yesorno[1] == 'E'&&yesorno[2] == 'S')goto start;
+	if (yesorno[0] == 'y'&&yesorno[1] == 'e'&&yesorno[2] == 'p')goto start;
+	if (yesorno[0] == 'Y'&&yesorno[1] == 'E'&&yesorno[2] == 'P')goto start;
 	system("pause");
+	system("cls");
 }
