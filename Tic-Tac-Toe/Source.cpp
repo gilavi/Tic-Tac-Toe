@@ -17,6 +17,7 @@ start:
 	bool lvl = true;
 	int con = 0;
 	string level;
+	system("cls");
 	cout << "what do you want : " << endl;
 	cout << "1)eazy" << endl;
 	cout << "3)hard" << endl;
@@ -78,6 +79,15 @@ st:
 		if (GetAsyncKeyState(VK_SPACE)){
 				map[y][x] = 'X';
 				for (int h = 0; h < 3; h++){
+					if (map[0][1] == 'X'&&map[1][1] == 'X'&&map[2][1] == 'X'){
+						goto finishw;
+					}
+					if (map[0][4] == 'X'&&map[1][4] == 'X'&&map[2][4] == 'X'){
+						goto finishw;
+					}
+					if (map[0][7] == 'X'&&map[1][7] == 'X'&&map[2][1] == 'X'){
+						goto finishw;
+					}
 					for (int j = 0; j < 9; j++){
 						if (map[h][1] == 'X' && map[h][4] == 'X' && map[h][7] == 'X'){
 							goto finishw;
@@ -175,7 +185,7 @@ finishl:
 	system("cls");
 	cout << "You loose sorry " << endl;
 	system("pause");
-	cout << "Do you want to start again?" << endl; string yesorno;
+	cout << "Do you want to start again?" << endl; 
 	cin >> yesorno;
 	if (yesorno[0] == 'y'&&yesorno[1] == 'e'&&yesorno[2] == 's')goto start;
 	if (yesorno[0] == 'Y'&&yesorno[1] == 'E'&&yesorno[2] == 'S')goto start;
