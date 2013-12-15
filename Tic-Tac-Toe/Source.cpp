@@ -7,6 +7,7 @@ using namespace std;
 bool game_running = true;
 int main(){
 start:
+	bool O = false;
 	char map[3][10] = {
 		"(X)( )( )",
 		"( )( )( )",
@@ -46,26 +47,69 @@ st:
 		system("pause>nul");
 		if (GetAsyncKeyState(VK_DOWN)){
 			int y2 = y + 1;
-			if (map[y2][x] == ' '){
-				map[y][x] = ' ';
+			if (O == true){
+				O = false;
+				map[y][x] = 'O';
 				y++;
 				map[y][x] = 'X';
+			}
+			else{
+				if (map[y2][x] == ' '){
+					map[y][x] = ' ';
+					y++;
+					map[y][x] = 'X';
+				}
+				else if (map[y2][x] == 'O'){
+					O = true;
+					map[y][x] = ' ';
+					y++;
+					map[y][x] = 'X';
+				}
 			}
 		}
 		if (GetAsyncKeyState(VK_UP)){
 			int y2 = y - 1;
-			if (map[y2][x] == ' '){
-				map[y][x] = ' ';
+			if (O == true){
+				O = false;
+				map[y][x] = 'O';
 				y--;
 				map[y][x] = 'X';
+			}
+			else{
+				if (map[y2][x] == ' '){
+					map[y][x] = ' ';
+					y--;
+					map[y][x] = 'X';
+				}
+				else if (map[y2][x] == 'O'){
+					O = true;
+					map[y][x] = ' ';
+					y++;
+					map[y][x] = 'X';
+				}
 			}
 		}
 		if (GetAsyncKeyState(VK_RIGHT)){
 			int x2 = x + 3;
-			if (map[y][x2] == ' '){
-				map[y][x] = ' ';
-				x = x + 3;
+			int x2 = x + 1;
+			if (O == true){
+				O = false;
+				map[y][x] = 'O';
+				x+=3;
 				map[y][x] = 'X';
+			}
+			else{
+				if (map[y][x2] == ' '){
+					map[y][x] = ' ';
+					y+=3;
+					map[y][x] = 'X';
+				}
+				else if (map[y][x2] == 'O'){
+					O = true;
+					map[y][x] = ' ';
+					y+=3;
+					map[y][x] = 'X';
+				}
 			}
 		}
 		if (GetAsyncKeyState(VK_LEFT)){
